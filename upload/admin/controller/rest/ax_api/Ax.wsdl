@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:i1="http://tempuri.org" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:i0="http://schemas.microsoft.com/netfx/2009/05/routing" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" name="RoutingService" targetNamespace="http://tempuri.org/">
+<wsp:Policy wsu:Id="reqReplyEndpoint_policy">
+<wsp:ExactlyOne>
+<wsp:All>
+<http:BasicAuthentication xmlns:http="http://schemas.microsoft.com/ws/06/2004/policy/http"/>
+</wsp:All>
+</wsp:ExactlyOne>
+</wsp:Policy>
+<wsp:Policy wsu:Id="BasicHttpBinding_OpenCardIntegrationService_policy">
+<wsp:ExactlyOne>
+<wsp:All>
+<http:BasicAuthentication xmlns:http="http://schemas.microsoft.com/ws/06/2004/policy/http"/>
+</wsp:All>
+</wsp:ExactlyOne>
+</wsp:Policy>
+<wsdl:import namespace="http://schemas.microsoft.com/netfx/2009/05/routing" location="http://ax-test.aljouf.com.sa:8101/openCardAX/xppservice.svc"/>
+<wsdl:import namespace="http://tempuri.org" location="http://ax-test.aljouf.com.sa:8101/openCardAX/xppservice.svc"/>
+<wsdl:types/>
+<wsdl:binding name="reqReplyEndpoint" type="i0:IRequestReplyRouter">
+<wsp:PolicyReference URI="#reqReplyEndpoint_policy"/>
+<soap:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+</wsdl:binding>
+<wsdl:binding name="BasicHttpBinding_OpenCardIntegrationService" type="i1:OpenCardIntegrationService">
+<wsp:PolicyReference URI="#BasicHttpBinding_OpenCardIntegrationService_policy"/>
+<soap:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+<wsdl:operation name="CreateSOLineNew">
+<soap:operation soapAction="http://tempuri.org/OpenCardIntegrationService/CreateSOLineNew" style="document"/>
+<wsdl:input name="OpenCardIntegrationServiceCreateSOLineNewRequest">
+<soap:header message="i1:OpenCardIntegrationServiceCreateSOLineNewRequest_Headers" part="context" use="literal"/>
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output name="OpenCardIntegrationServiceCreateSOLineNewResponse">
+<soap:body use="literal"/>
+</wsdl:output>
+<wsdl:fault name="AifFaultFault">
+<soap:fault name="AifFaultFault" use="literal"/>
+</wsdl:fault>
+</wsdl:operation>
+<wsdl:operation name="TestReturnStr">
+<soap:operation soapAction="http://tempuri.org/OpenCardIntegrationService/TestReturnStr" style="document"/>
+<wsdl:input name="OpenCardIntegrationServiceTestReturnStrRequest">
+<soap:header message="i1:OpenCardIntegrationServiceTestReturnStrRequest_Headers" part="context" use="literal"/>
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output name="OpenCardIntegrationServiceTestReturnStrResponse">
+<soap:body use="literal"/>
+</wsdl:output>
+<wsdl:fault name="AifFaultFault">
+<soap:fault name="AifFaultFault" use="literal"/>
+</wsdl:fault>
+</wsdl:operation>
+<wsdl:operation name="GetOnhand">
+<soap:operation soapAction="http://tempuri.org/OpenCardIntegrationService/GetOnhand" style="document"/>
+<wsdl:input name="OpenCardIntegrationServiceGetOnhandRequest">
+<soap:header message="i1:OpenCardIntegrationServiceGetOnhandRequest_Headers" part="context" use="literal"/>
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output name="OpenCardIntegrationServiceGetOnhandResponse">
+<soap:body use="literal"/>
+</wsdl:output>
+<wsdl:fault name="AifFaultFault">
+<soap:fault name="AifFaultFault" use="literal"/>
+</wsdl:fault>
+</wsdl:operation>
+<wsdl:operation name="CreateSOHeader">
+<soap:operation soapAction="http://tempuri.org/OpenCardIntegrationService/CreateSOHeader" style="document"/>
+<wsdl:input name="OpenCardIntegrationServiceCreateSOHeaderRequest">
+<soap:header message="i1:OpenCardIntegrationServiceCreateSOHeaderRequest_Headers" part="context" use="literal"/>
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output name="OpenCardIntegrationServiceCreateSOHeaderResponse">
+<soap:body use="literal"/>
+</wsdl:output>
+<wsdl:fault name="AifFaultFault">
+<soap:fault name="AifFaultFault" use="literal"/>
+</wsdl:fault>
+</wsdl:operation>
+</wsdl:binding>
+<wsdl:service name="RoutingService">
+<wsdl:port name="reqReplyEndpoint" binding="tns:reqReplyEndpoint">
+<soap:address location="http://ax-test.aljouf.com.sa:8101/openCardAX/xppservice.svc"/>
+</wsdl:port>
+<wsdl:port name="BasicHttpBinding_OpenCardIntegrationService" binding="tns:BasicHttpBinding_OpenCardIntegrationService">
+<soap:address location="http://ax-test.aljouf.com.sa:8101/openCardAX/xppservice.svc"/>
+</wsdl:port>
+</wsdl:service>
+</wsdl:definitions>
