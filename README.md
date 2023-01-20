@@ -1,1 +1,1 @@
-# -Microsoft-Dynamics-OpenCart-Automation
+# Microsoft-Dynamics-OpenCart-Automation
